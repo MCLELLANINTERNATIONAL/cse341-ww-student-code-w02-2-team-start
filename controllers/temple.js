@@ -115,7 +115,7 @@ exports.update = (req, res) => {
     })
     .catch((err) => {
     res.status(500).send({
-        message: 'Error updating Temple with id=' + id,
+        message: 'Error updating Temple with id=' + temple_id,
     });
   });
 };
@@ -124,11 +124,11 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const temple_id = req.params.temple_id;
 
-  Temple.findByIdAndRemove(id)
+  Temple.findByIdAndRemove(temple_id)
     .then((data) => {
     if (!data) {
     res.status(404).send({
-       message: `Cannot delete Temple with id=${id}. Maybe Temple was not found!`,
+       message: `Cannot delete Temple with id=${temple_id}. Maybe Temple was not found!`,
     });
     } else {
         res.send({
@@ -138,7 +138,7 @@ exports.delete = (req, res) => {
   })
     .catch((err) => {
     res.status(500).send({
-    message: 'Could not delete Temple with id=' + id,
+    message: 'Could not delete Temple with temple_id=' + temple_id,
     });
   });
 };
